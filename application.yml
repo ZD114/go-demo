@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: go-demo
+  profiles:
+    active: dev
+
+server:
+  port: 6108
+
+logging:
+  level: debug
+  file: logs/go-demo.log
+  date-time-format: "2006-01-02 15:04:05.000"
+
+nacos:
+  namespace: xxxx
+  host: 127.0.0.1
+  port: 8848
+  username: nacos
+  password: nacos
