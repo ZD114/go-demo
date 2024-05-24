@@ -1,14 +1,23 @@
 package service
 
-import "log"
+import (
+	"fmt"
+	"zhangda.com/go-demo/config"
+	"zhangda.com/go-demo/repository"
+)
 
 type testService struct {
 }
 
 var TestService = new(testService)
 
-func (s *testService) Test() (string, error) {
-	log.Println("测试接口联通性")
+func (s *testService) Test(id int64) (*repository.Test, error) {
+	ms := new(repository.Test)
 
-	return "测试接口联通性", nil
+	if _, err := config.GetDB().SQL("SELECT * FROM test WHERE id = ? ", id).Get(ms); err != nil {
+		fmt.Println(err)
+		return ms, err
+	}
+
+	return ms, nil
 }

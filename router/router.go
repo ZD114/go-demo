@@ -24,7 +24,7 @@ func NewRouter(viper *viper.Viper) *gin.Engine {
 
 	group := server.Group("")
 	{
-		group.GET("/test", controller.Test)
+		group.GET("/test/:id", controller.Test)
 	}
 
 	return server
